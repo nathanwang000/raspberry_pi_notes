@@ -1,3 +1,16 @@
 * use crontab to automate regular work
+use crontab -e to edit crontab
+specify minute hour month day_of_month day_of_week and the command to execute
+use crontab -l to list crontab
+use crontab -r to remove
 * lynx is a great text editor
-* use motion as a web cam by running ./motion -n -c motion-mmalcam.conf, veiw stream at 10.0.0.23:8081
+g for open a new url
+/ for search
+n for next search result
+* use motion as a web cam 
+running ./motion -n -c motion-mmalcam.conf
+veiw stream at 10.0.0.23:8081
+* ip related
+ifconfig and look for inet addr for internal IP
+use lynx --dump http://ipecho.net/plain to get external ip addr
+for accessing web server, I need to do port forwarding

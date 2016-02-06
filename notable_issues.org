@@ -7,3 +7,5 @@ sudo apt-get install mailutils
 google this topic
 
 
+* setup port forwarding to allow access from external network
+google xfinity port forwarding
