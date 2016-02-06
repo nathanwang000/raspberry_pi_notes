@@ -1,0 +1,22 @@
+* ROCNN: rotational convolutional neural network idea
+This is essentially the version I talked about with Jiadeng, however he doesn't like it. I just want to record it here for future reference: I think this is a brilliant ideaa!
+** definitions
+Configuration process (C): a set of random variables between filters of layer n+1 and filters of n (one variable for each n+1 to n layer filters pair), each random variable maps from sample space to [0, 2pi]
+Configuration: a sample path of the configuration process (c1,c2,c3,c4,...)
+Input and target: the training data comes in the form of (input(i), target(t))
+** insight and assumptions
+1) There exist a correct distribution of configurations (without noise, a correct configuration of a network assigns probability of 1 to the target category given the input image)
+2) The random variables inside a configuration process are independent (given the relationship between 2 filters, it tells us nothing about the relationship between other filters so that filters should learn independent features)
+3) Each parent filter (filter in n+1 layer) expect the same pose of children filter spatially (in reality, spatial need for filters should be in similar range)
+4) For C = (C1,C2,C3,...), each C_i is parametrized by a Beta distribution with support [0, 2pi]
+*** remarks
+each of the assumption seems ridiculous and too strong, but if you think about each assumption closely, they make much sense (expand on this thread) both computationally and conceptually.
+** the learning algorithm
+1) given (i,t), sample c from P(C), connect the network according to c, and update the network using gradient descent to learn P(t|c)
+2) For i = 1 to n
+       fix c_j where j!=i
+       get N samples c_i from P(C_i)
+       get P(t|(c_1,...c_i,...)) for each of the N samples
+       find MLE of (alpha, beta) from the beta distribution for C_i weighted by P(t|(c_1,...c_i,...)) (eg. a c_i given p(t|c_i)=0.1 only counts as 0.1 samples of c_i, this comes from assumption (1))
+*** remarks
+step (1) assumes c is the correct pose for the network on image i, then by assumption (1) we want to maximize P(t|c). Step (2) uses assuption (2) which greatly simplifies the MLE estimation process by both providing a closed form solution for each random variable (N could be as small as 30) and beta distribution constrains the shape to be single modal.
