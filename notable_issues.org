@@ -1,0 +1,7 @@
+* correct key binding from UK to US
+sudo dpkg-reconfigure keyboard-configuration
+* set up email
+sudo apt-get install mailutils
+# then setup the corresponding external mail server: eg. google
+* set up ssh key for github
+google this topic
