@@ -5,3 +5,5 @@ sudo apt-get install mailutils
 # then setup the corresponding external mail server: eg. google
 * set up ssh key for github
 google this topic
+
+
