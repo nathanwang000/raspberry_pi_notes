@@ -14,3 +14,5 @@ veiw stream at 10.0.0.23:8081
 ifconfig and look for inet addr for internal IP
 use lynx --dump http://ipecho.net/plain to get external ip addr
 for accessing web server, I need to do port forwarding
+use www.everydaylinuxuser.com/2013/06/connecting-to-raspberry-pi-from-outside.html
+* use ino for commandline arduino
